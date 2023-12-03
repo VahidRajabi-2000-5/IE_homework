@@ -1,0 +1,16 @@
+{% extends '_base.html' %} 
+
+{% block title %}Log Out{% endblock title %}
+
+{% block content %}
+<div class="container">
+  <div class="cart shadow my-3 p-5">
+    <h1>Sign Out</h1>
+    <p>Are You Sour! you want to logout?</p>
+    <form action="" method="post">
+      {% csrf_token %}
+      <button class="btn btn-danger">Log Out</button>
+    </form>
+  </div>
+</div>
+{% endblock content %}

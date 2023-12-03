@@ -1,0 +1,44 @@
+{% extends '_base.html' %}
+
+
+{% block title %}Task List{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-9">
+        {% for task in tasks %}
+            <div class="card shadow-sm my-3">
+               
+                <div class="card-body">
+                    <h5 class="card-title">{{task.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted small py-2">deadline : {{task.deadline}}</h6>
+                    <p class="card-text py-3">
+                      {{task.description|truncatewords:15}}
+                    </p>
+                    <a href="{{task.get_absolute_url}}" class="btn btn-sm btn-success">Read More</a>
+                  </div>
+                  
+                  
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-3">
+
+                <div class="card my-4">
+                    <h5 class="card-header">About</h5>
+                    <div class="card-body">
+                        <p class="card-text">
+                          We love Python and Django. So we created a management site for you to manage your time and assignments
+                        </p>
+                        <a href="#"
+                           class="btn btn-sm btn-danger">
+                            More...
+                        </a>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

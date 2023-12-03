@@ -1,0 +1,21 @@
+{% extends '_base.html' %} 
+
+{% block title %}ProFile{% endblock title %} 
+
+{% block content %}
+<div class="container" dir ='ltr'>
+  <div class="cart shadow my-3 p-5">
+    <h3>username : {{pro.username}}</h3>
+    <br>
+    <div class="container">
+      <h6> First_name : {{pro.first_name}}</h6>
+      <h6> Last_name : {{pro.last_name}}</h6>
+      <h6> email : {{pro.email}}</h6>
+      <h6> brith_date : {{pro.brith_date}}</h6>
+    </div>
+    <br>
+  </div>
+</div>
+
+
+{% endblock content %}

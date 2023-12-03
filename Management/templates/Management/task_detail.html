@@ -1,0 +1,62 @@
+{% extends '_base.html' %} 
+{% load crispy_forms_tags %}
+
+
+{% block title %}{{post.title}}{% endblock title %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="row">
+        <div class="col-9">
+            <div class="card shadow my-3 p-5">
+                <h1>{{task.title}}</h1>
+                <h6>Date Time Created : {{task.datetime_created}}</h6>
+                <h6>Date Time Modified : {{task.datetime_modified}}</h6>
+                <p class="small text-muted mt-2">By: {{task.user}}</p>
+                <h6>Dead Line : {{task.deadline}}</h6>
+                <p class="mt-2">{{task.description|linebreaks}}</p>
+                <div class="container mt-3">
+                    {% if task.user == user %}
+                        <a class='btn btn-success' href="{% url 'task_update' task.id %}">Edit</a>
+                        <a class='btn btn-danger' href="{% url 'task_delete' task.id %}">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        
+            <div class="card shadow my-3 p-5" dir='rtl'>
+                <h3>Commands :{{task.commands.count}}</h3>
+                <div class="container mt-5">
+                {% for command in commands %}
+                    <p>{{command.message|linebreaks}}</p> 
+                    <hr>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="card shadow my-3 p-5">
+                <h3>Add New Command:</h3>
+                <form action="{% url 'command_create' task.id %}" method="POST">
+                    {% csrf_token %}
+                    {{command_form|crispy}}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                
+            </div>
+        </div>
+        <div class="col-3">
+
+                <div class="card my-4">
+                    <h5 class="card-header">About</h5>
+                    <div class="card-body">
+                        <p class="card-text">We love python and django. So we created a blog site to share our
+                            thoughts</p>
+                        <a href="#"
+                           class="btn btn-sm btn-danger">
+                            More...
+                        </a>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
