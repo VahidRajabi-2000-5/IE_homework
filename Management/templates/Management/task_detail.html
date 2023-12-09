@@ -9,6 +9,11 @@
     <div class="row">
         <div class="col-9">
             <div class="card shadow my-3 p-5">
+                <div>
+                    {% if task.task_image %}
+                        <img src="{{task.task_image.url}}" class="img-fluid rounded-start" alt="...">
+                    {% endif %}
+                </div>
                 <h1>{{task.title}}</h1>
                 <h6>Date Time Created : {{task.datetime_created}}</h6>
                 <h6>Date Time Modified : {{task.datetime_modified}}</h6>

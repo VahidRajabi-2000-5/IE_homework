@@ -15,6 +15,9 @@ class Task(models.Model):
         ('in_progress', 'In Progress'), 
         ('done', 'Done'),   
     )
+    
+    task_image = models.ImageField("task_image", upload_to="task_cover/",blank=True)
+    
     user = models.ForeignKey(get_user_model(), verbose_name="tasks", on_delete=models.CASCADE)
     title = models.CharField("title", max_length=300)
     description=models.TextField("description")
